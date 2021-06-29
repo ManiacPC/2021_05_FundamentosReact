@@ -10,9 +10,8 @@ import {
     Input,
     Row
 } from 'reactstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas, faCoffee } from '@fortawesome/free-solid-svg-icons' // ToDo: FontAwesome funcionando >:(
-
+import moment from 'moment'
+import localization from 'moment/locale/es'
 
 const Prueba = () => {
     const [nombre, setNombre] = useState('Enrique')
@@ -22,6 +21,8 @@ const Prueba = () => {
     const [ciudad, setCiudad] = useState('Calama')
     const [habilitado, setHabilitado] = useState(true)
     const [habita, setHabita] = useState('Calama') // Opciones: Calama, Región, Otro
+
+    moment.updateLocale('es', localization);
 
     // const [,] = useState(<valor predeterminado>) => tiene esta forma
 
@@ -69,6 +70,9 @@ const Prueba = () => {
                     <h1>Esta es una prueba!</h1>
                     <h2>Bienvenido {nombre} al {anio} !!</h2>
                     <p>Esto NO arrojará error</p>
+                    {/* EJEMPLO FORMATO FECHA + INTERNACIONALIZACIÓN
+                        Martes 08, Junio 2021 */}
+                    <p>Fecha actual: {moment().format("dddd DD, MMM YYYY hh:mm:ss")} </p>
                     <hr />
 
                     <h5>Contador: {contador}</h5>
@@ -146,9 +150,8 @@ const Prueba = () => {
                             </FormGroup>
                         </FormGroup>
                         <Row>
-                            <Col md="12" className="text-right">
-                                <FontAwesomeIcon icon="coffee" />
-                                <Button color="info">Enviar formulario</Button>
+                            <Col md="12" className="text-right">                               
+                                <Button color="info"><i className="fas fa-save"></i> Enviar formulario</Button>
                             </Col>
                         </Row>
                     </Form>
